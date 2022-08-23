@@ -1,0 +1,37 @@
+h2 {
+    display: inline;
+}
+
+.name {
+    color: red;
+    margin: 10px;
+}
+.clicked {
+    height: 45px;
+    width: 140px;
+    border: none;
+    background-color: green;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    align-self: center;
+    margin: 5px;
+}
+
+.clicked:hover, .unclicked:hover {
+    border: 2px solid red;
+    color: red;
+    cursor: pointer;
+}
+
+.unclicked {
+    height: 45px;
+    width: 140px;
+    border: none;
+    background-color: rgb(37, 11, 11);
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    align-self: center;
+    margin: 5px;
+}

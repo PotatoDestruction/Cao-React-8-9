@@ -1,0 +1,101 @@
+.view {
+    padding: 10px 18px;
+    background-color: orange;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    font-weight: 700;
+    color: white;
+}
+
+.delete {
+    font-weight: 700;
+    padding: 10px 18px;
+    background-color: white;
+    outline: 1px solid orange;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    color: orange;
+}
+
+.view:hover {
+    outline: 2px solid green;
+    color: green;
+    cursor: pointer;
+}
+
+.delete:hover {
+    outline: 2px solid green;
+    color: green;
+    cursor: pointer;
+}
+
+
+.addButton {
+    height: 45px;
+    width: 140px;
+    border: none;
+    background-color: orange;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    align-self: center;
+}
+
+.addButton:hover {
+    outline: 2px solid green;
+    color: green;
+    cursor: pointer;
+}
+
+.form-button {
+    padding: 10px 40px;
+    border: none;
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+}
+
+.form-button:hover {
+    outline: 2px solid green;
+    color: green;
+    cursor: pointer;
+}
+
+#noButtons {
+    display: none;
+}
+
+.addPrescription {
+    height: 45px;
+    width: 180px;
+    margin: 5px;
+    border: none;
+    background-color: orange;
+    outline: 2px solid orange;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    align-self: center;
+}
+
+.addPrescription:hover, .addLogs:hover {
+    outline: 2px solid green;
+    color: green;
+    cursor: pointer;
+}
+
+.addLogs {
+    height: 45px;
+    width: 140px;
+    margin: 5px;
+    border: none;
+    background-color: white;
+    color: orange;
+    font-weight: 700;
+    outline: 2px solid orange;
+    border-radius: 5px;
+    align-self: center;
+}

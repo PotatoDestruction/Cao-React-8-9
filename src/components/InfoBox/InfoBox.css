@@ -1,0 +1,15 @@
+.box {
+    text-align: center;
+    border: 1px solid grey;
+    width: 280px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 30px;
+}
+
+.p1 {
+    margin: 5px;
+}
+

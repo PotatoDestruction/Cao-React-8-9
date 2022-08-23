@@ -1,0 +1,29 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+}
+
+.linkWrap {
+    display: flex;
+    margin-right: 50px;
+}
+
+.link {
+    align-self: center;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: orange;
+    font-weight: 700;
+}
+
+.imgWrap {
+    display: flex;
+    margin-left: 50px;
+}
+
+img {
+    width: 150px;
+    align-self: center;
+}

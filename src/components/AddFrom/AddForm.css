@@ -1,0 +1,21 @@
+.formBox {
+    width: 300px;
+    margin: 50px auto;
+    padding: 50px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-button-wrap {
+    margin-top: 20px;
+    text-align: center;
+}
+
