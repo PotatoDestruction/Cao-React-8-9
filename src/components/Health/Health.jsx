@@ -17,7 +17,7 @@ const Health = () => {
     const [trigger, setTrigger] = useState(0);
     const [trigger2, setTrigger2] = useState(0);
 
-
+    console.log('test')
 
     useEffect(() => {
         fetch(`http://localhost:8080/v1/logs/${petId}`)
