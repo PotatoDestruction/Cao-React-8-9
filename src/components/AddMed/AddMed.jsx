@@ -1,5 +1,6 @@
 import NavBar from "../NavBar/NavBar";
 import Button from "../Button/Button";
+import { postMeds } from "./ContextMed";
 
 const AddMed = () => {
 
@@ -12,23 +13,11 @@ const AddMed = () => {
             <form className="logForm" onSubmit={(e) => {
                 e.preventDefault();
 
-                fetch('http://localhost:8080/v1/medications', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: e.target.medName.value,
-                        description: e.target.description.value
-                    })
+                postMeds({
+                    name: e.target.medName.value,
+                    description: e.target.description.value
                 })
-                    .then(res => res.json())
-                    .then(res => {
-                        setTimeout(window.location.href = `http://localhost:3000/meds`)
-                    }, 1000)
-                    .catch(error => console.log(error))
-
+                
             }}>
                 <div className="inpBox">
                     <label>New Medication:</label>

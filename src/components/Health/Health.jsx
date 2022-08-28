@@ -4,19 +4,48 @@ import InfoBox from "../InfoBox/InfoBox";
 import './Health.css'
 import { useEffect } from "react";
 import { useState } from "react";
+import { useReducer } from "react";
+
+function logReducer(state, action){
+
+    switch(action.action){      
+        case 'set_logs':
+            return action.logs
+        case 'set_null':
+            return null
+            default:
+                console.log('error')
+    }
+    
+}
+
+function prescriptionReducer(state, action) {
+
+    switch(action.action){      
+        case 'set_pres':
+            return action.pres
+        case 'set_null':
+            return null
+            default:
+                console.log('error')
+    }
+
+}
 
 const Health = () => {
+
+
     let getPara = new URL(window.location.href);
     let params = getPara.search;
     let getInfo = new URLSearchParams(params);
     let petId = getInfo.get('id');
     let getPetName = getInfo.get('name');
 
-    let [petLogs, setPetLogs] = useState(null);
-    const [petPrescriotions, setPetPrescriptions] = useState(null);
     const [trigger, setTrigger] = useState(0);
     const [trigger2, setTrigger2] = useState(0);
 
+    const [ log, dispatchLogs] = useReducer(logReducer, null)
+    const [prescription, dispatchPrescriptions] = useReducer(prescriptionReducer, null)
 
 
     useEffect(() => {
@@ -25,8 +54,8 @@ const Health = () => {
             .then(res => {
                 if (res.message == 'This pet does not have any logs') {
                     return
-                } else {
-                    setPetLogs(res)
+                } else {                
+                    dispatchLogs({action:'set_logs', logs: res})
                 }
 
             })
@@ -40,7 +69,7 @@ const Health = () => {
                 if(res.length < 1) {
                     return
                 }else {
-                    setPetPrescriptions(res)
+                    dispatchPrescriptions({ action:'set_pres', pres: res})
                 }
                 
             })
@@ -52,21 +81,21 @@ const Health = () => {
     }
 
     var testobj = null
-    if (petLogs && petPrescriotions) {
+    if (log && prescription) {
         testobj = [
-            ...petLogs,
-            ...petPrescriotions
+            ...log,
+            ...prescription
         ]
 
     } else
-        if (petLogs) {
+        if (log) {
             testobj = [
-                ...petLogs
+                ...log
             ]
         } else
-            if (petPrescriotions) {
+            if (prescription) {
                 testobj = [
-                    ...petPrescriotions
+                    ...prescription
                 ]
             }
 
@@ -93,7 +122,7 @@ const Health = () => {
                     e.target.className === 'clicked' ? e.target.className = 'unclicked' : e.target.className = 'clicked'
 
                     if (e.target.className === 'unclicked') {
-                        setPetLogs(null)
+                        dispatchLogs({action:'set_null', logs: null})
                     } else {
                         setTrigger(trigger + 1)
                     }
@@ -103,16 +132,16 @@ const Health = () => {
                     e.target.className === 'clicked' ? e.target.className = 'unclicked' : e.target.className = 'clicked'
 
                     if (e.target.className === 'unclicked') {
-                        setPetPrescriptions(null)
+                        dispatchPrescriptions({action:'set_null', logs: null})
                     } else {
                         setTrigger2(trigger2 + 1)
                     }
                 }}>Prescriptions</button>
 
             </div>
-            {!petLogs && !petPrescriotions && <h1>No data . . .</h1>}
+            {!log && !prescription && <h1>No data . . .</h1>}
             <div className="petContainer">
-                {petPrescriotions && petLogs && petLogs.length > 0 && testobj.map((log, i) => {
+                {prescription && log && log.length > 0 && testobj.map((log, i) => {
                     var date = new Date(log.dob);
                     var dd = String(date.getDate()).padStart(2, '0');
                     var mm = String(date.getMonth() + 1).padStart(2, '0');
@@ -136,7 +165,7 @@ const Health = () => {
                     )
                 })}
 
-                {petLogs && !petPrescriotions && petLogs.length > 0 && petLogs.map((log, i) => {
+                {log && !prescription && log.length > 0 && log.map((log, i) => {
                     var date = new Date(log.dob);
                     var dd = String(date.getDate()).padStart(2, '0');
                     var mm = String(date.getMonth() + 1).padStart(2, '0');
@@ -154,7 +183,7 @@ const Health = () => {
                     )
                 })}
 
-                {!petLogs && petPrescriotions && petPrescriotions.map((pr, i) => {
+                {!log && prescription && prescription.map((pr, i) => {
                     var pre = new Date();
                     var qq = String(pre.getDate()).padStart(2, '0');
                     var ww = String(pre.getMonth() + 1).padStart(2, '0');

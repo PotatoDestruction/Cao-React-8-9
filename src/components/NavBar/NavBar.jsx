@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import './NavBar.css'
 
+
 const NavBar = ({ link1, link2, name1, name2 }) => {
+
 
     return(
         <nav>
@@ -13,6 +15,10 @@ const NavBar = ({ link1, link2, name1, name2 }) => {
                 <Link className="link" to={link1} >{name1}</Link>
                 <Link className="link" to={link2} >{name2}</Link>
             </div>
+
+            <div>
+            </div>
+            
         </nav>
     )
 }
